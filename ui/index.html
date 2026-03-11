@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spam Detector Lab</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">SMS classifier</p>
+        <h1>Test any message against your spam and ham model.</h1>
+        <p class="lede">
+          Paste a message, run inference, and inspect confidence scores directly
+          in the browser.
+        </p>
+      </section>
+
+      <section class="panel">
+        <label class="field-label" for="messageInput">Message</label>
+        <textarea
+          id="messageInput"
+          class="message-input"
+          placeholder="Type or paste an SMS message here..."
+        ></textarea>
+
+        <div class="actions">
+          <button id="predictButton" class="predict-button" type="button">
+            Analyze message
+          </button>
+          <button
+            class="ghost-button"
+            type="button"
+            data-sample="Congratulations! You have won a free vacation. Reply WIN now to claim."
+          >
+            Spam sample
+          </button>
+          <button
+            class="ghost-button"
+            type="button"
+            data-sample="Hey, I will be there in 10 minutes. Can you wait near the entrance?"
+          >
+            Ham sample
+          </button>
+        </div>
+
+        <p id="statusText" class="status-text">Model ready.</p>
+      </section>
+
+      <section id="resultCard" class="result-card hidden" aria-live="polite">
+        <div class="result-header">
+          <p class="result-label">Prediction</p>
+          <span id="predictionBadge" class="badge">ham</span>
+        </div>
+
+        <div class="meter-group">
+          <div class="meter-row">
+            <div class="meter-copy">
+              <span>Ham confidence</span>
+              <strong id="hamScore">0%</strong>
+            </div>
+            <div class="meter"><span id="hamBar"></span></div>
+          </div>
+
+          <div class="meter-row">
+            <div class="meter-copy">
+              <span>Spam confidence</span>
+              <strong id="spamScore">0%</strong>
+            </div>
+            <div class="meter"><span id="spamBar"></span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
